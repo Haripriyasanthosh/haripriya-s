@@ -1,0 +1,81 @@
+{% include 'donor_header.html' %}
+<center>
+    <form action="" method="post">
+        <pre>
+        </pre>
+        <h2>Donation history</h2>
+        <br>
+        <br>
+
+        <table class="table table-striped" style="width: 1200px;">
+            <tr>
+                <th>Last Donated Date</th>
+                <th>Status</th>
+                <!-- <th>Name</th> -->
+                <th>Phone</th>
+                <th>Address</th>
+            </tr>
+
+            {% for i in docview %}
+            <tr>
+                <td>{{i.b_date}}</td>
+                <td>{{i.b_status}}</td>
+                <!-- <td>{{i.user.full_name}}</td> -->
+                <td>{{i.user.u_phone}}</td>
+                <td>{{i.user.address}}</td>
+
+                {% if i.b_status == 'Pending' %}
+                <td><button class="btn btn-warning accept-btn" data-id="{{i.id}}" data-user-id="{{i.user_id}}">Accept</button></td>
+                <td><button class="btn btn-warning reject-btn" data-id="{{i.id}}" data-user-id="{{i.user_id}}">Reject</button></td>
+                {% endif %}
+
+            </tr>
+            {% endfor %}
+
+        </table>
+    </form>
+</center>
+
+<pre>
+</pre>
+
+{% include 'footer.html' %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.accept-btn').click(function(e) {
+            e.preventDefault(); // Prevent default button action
+            var id = $(this).data('id');
+            var userId = $(this).data('user-id');
+            $.ajax({
+                url: '/accept_req/' + id + '/' + userId,
+                type: 'POST',
+                success: function(response) {
+                    alert('Successfully accepted');
+                    window.location.reload(); // Reload the page after successful acceptance
+                },
+                error: function(xhr, status, error) {
+                    alert('Error: ' + error);
+                }
+            });
+        });
+
+        $('.reject-btn').click(function(e) {
+            e.preventDefault(); // Prevent default button action
+            var id = $(this).data('id');
+            var userId = $(this).data('user-id');
+            $.ajax({
+                url: '/reject_req/' + id + '/' + userId,
+                type: 'POST',
+                success: function(response) {
+                    alert('Successfully rejected');
+                    window.location.reload(); // Reload the page after successful rejection
+                },
+                error: function(xhr, status, error) {
+                    alert('Error: ' + error);
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,73 @@
+{% comment %} <!-- donation_drive_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Drives</title>
+</head>
+<body>
+    <h1>List of Donation Drives</h1>
+    <ul>
+        {% for drive in drives %}
+            <li>
+                <strong>{{ drive.name }}</strong><br>
+                Location: {{ drive.location }}<br>
+                Date: {{ drive.date }}<br>
+                Time: {{ drive.start_time }} - {{ drive.end_time }}<br>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
+ {% endcomment %}
+
+
+
+
+
+
+
+ <!-- donation_drive_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Drives</title>
+</head>
+<body>
+    <h1>List of Donation Drives</h1>
+    <ul>
+        {% for drive in drives %}
+            <li>
+                <strong>{{ drive.name }}</strong><br>
+                Location: {{ drive.location }}<br>
+                Date: {{ drive.date }}<br>
+                Time: {{ drive.start_time }} - {{ drive.end_time }}<br>
+                
+                <!-- List of Donations for this Drive -->
+                <ul>
+                    {% for donation in drive.donation_set.all %}
+                        <li>
+                            Donation Type: {{ donation.type }}<br>
+                            Amount: {{ donation.amount }}<br>
+                            Donor: {{ donation.donor }}<br>
+                            <!-- Add more donation details as needed -->
+                        </li>
+                    {% empty %}
+                        <li>No donations yet.</li>
+                    {% endfor %}9
+                </ul>
+            </li>
+        {% empty %}
+            <li>No donation drives available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

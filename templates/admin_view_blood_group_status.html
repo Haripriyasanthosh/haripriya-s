@@ -1,0 +1,39 @@
+{% include 'admin_header.html' %}
+
+<div class="card">
+    <div class="card-header">
+        <center>
+        <h1 class="card-title">Blood donation Information</h1>
+        </center>
+    </div>
+    <div class="card-body">
+        <form action="" method="post">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Blood Group</th>
+                            <th>Details</th>
+                            <th>Blood Expiry</th>
+                            <th>Status</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in docview %}
+                            <tr>
+                                <td>{{ i.b_group }}</td>
+                                <td>{{ i.b_details }}</td>
+                                <td>{{ i.b_expiry }}</td>
+                                <td>{{ i.b_status }}</td>
+                                <td>{{ i.b_name }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% include 'footer.html' %}

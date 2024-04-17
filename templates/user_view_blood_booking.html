@@ -1,0 +1,31 @@
+{% include 'user_header.html' %}
+
+<form action="" method="post">
+    <table class="table table-striped" style="width: 1200px;">
+
+        <tr>
+            <th>Full Name</th>
+                <th>Email</th>
+                <th>Blood Type</th>
+                <th>Phone</th>
+                <th>Address</th>
+
+        </tr>
+
+        {% for i in docview %}
+        <tr>
+            <td>{{ donor.full_name }}</td>
+                <td>{{ donor.email }}</td>
+                <td>{{ donor.blod_type }}</td>
+                <td>{{ donor.phone }}</td>
+                <td>{{ donor.address }}</td>
+
+            {% comment %} <td><a href="/delete_bank/{{i.login_id}}" class="btn btn-warning">Delete</a></td> {% endcomment %}
+            <td><a href="/user_update_blood_booking/{{i.login_id}}" class="btn btn-warning">Update</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>  
+</form>
+
+{% include 'footer.html' %}

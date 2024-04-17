@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Menu</title>
+</head>
+<body>
+    {% comment %} <h1>Food Menu</h1> {% endcomment %}
+
+    <form action="{% url 'order_food'- %}" method="POST">
+        {% csrf_token %}
+        <h2>Select Refreshments:</h2>
+        <label for="selected_items">Choose refreshments:</label>
+        <select name="selected_items" id="selected_items">
+            <option value="">Select an item...</option> <!-- Placeholder option -->
+            {% comment %} <option value="Water">Water</option> {% endcomment %}
+            <option value="Juice">Juice</option>
+            <option value="Sports Drink">Sports Drink</option>
+            <option value="Cookie">Cookie</option>
+            <option value="Cracker">Cracker</option>
+            <option value="Granola Bar">Granola Bar</option>
+            <!-- Add more options as needed -->
+        </select>
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" min="1" value="1">
+        <button type="submit">Order</button>
+    </form>
+</body>
+</html>

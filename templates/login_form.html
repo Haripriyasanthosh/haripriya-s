@@ -1,0 +1,25 @@
+{% include 'public_header.html' %}
+<center>
+    <h1>Login</h1>
+    <form method="post">
+        <table class="table table-striped" style="width: 1200px;">
+                <tr>
+                    <th>Username</th>
+                    <td><input id="email" type="text" name="username" required class="form-control"></td>
+                    </tr>
+                <tr>
+                    <th>Password</th>
+                    <td><input id="password" type="password" name="password" required class="form-control"></td> 
+                    </tr>
+                    <tr>
+                    <td align="center" colspan="2"> <input id="login" type="submit" value="Login" style="width: 200px;" class="btn btn-primary"></td>
+            </tr>
+            <tr>
+                <td><a href="/forgot_password">forgot password</a></td>
+            </tr>
+        </table>
+    </form>
+</center>
+
+
+    {% include 'footer.html' %}

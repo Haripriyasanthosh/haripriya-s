@@ -1,0 +1,39 @@
+{% include 'donor_header.html' %}
+<center>
+    <h1>Edit Profile</h1>
+    <form method="post">
+        {% if donor_up %}
+
+        <table class="table table-striped" style="width: 1200px;">
+            <tr>
+                <th>Full Name</th>
+                <td><input type="text" name="name" value={{donor_up.full_name}} required class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Blood Group</th>
+                <td> <input type="text" name="bld" readonly value={{donor_up.blod_type}} required class="form-control"></td>
+            <tr>
+            <tr>
+                <th>Email</th>
+                <td> <input type="email" name="email" value={{donor_up.email}} required class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td> <input type="text" pattern="[0-9]{10}" name="phone" value={{donor_up.phone}} required class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td> <input type="text" name="address" value={{donor_up.address}} required class="form-control"></td>
+            <tr>
+                <td align="center" colspan="2"> <input type="submit" value="Update" style="width: 200px;" class="btn btn-primary"></td>
+            </tr>
+            
+        </table>
+        {% endif %}
+
+       
+    </form>
+</center>
+
+
+    {% include 'footer.html' %}

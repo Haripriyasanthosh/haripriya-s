@@ -1,0 +1,70 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Request</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #cc0000;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #response {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Blood Donation Request</h2>
+
+    <p><strong>Required Blood Amount:</strong> <span id="bloodAmount"></span> liters</p>
+    <p><strong>Required Date:</strong> <span id="requiredDate"></span></p>
+    
+    <!-- <h2>Requester Details</h2>
+    <p><strong>Name:</strong> {{ blood_request.requester.name }}</p>
+    <p><strong>Address:</strong> {{ blood_request.requester.address }}</p>
+    <p><strong>Phone Number:</strong> {{ blood_request.requester.phone_number }}</p> -->
+
+
+    <div id="response">
+        <button onclick="acceptRequest()">Accept</button>
+        <button onclick="rejectRequest()">Reject</button>
+    </div>
+
+    <script>
+        // Sample data for the blood donation request
+        var requestDetails = {
+            bloodAmount: 2,
+            requiredDate: '2023-12-01'
+        };
+
+        // Display request details
+        document.getElementById('bloodAmount').innerText = requestDetails.bloodAmount;
+        document.getElementById('requiredDate').innerText = requestDetails.requiredDate;
+
+        // Functions to handle donor response
+        function acceptRequest() {
+            document.getElementById('response').innerHTML = '<p style="color: green;">Request Accepted! Thank you for your donation.</p>';
+        }
+
+        function rejectRequest() {
+            document.getElementById('response').innerHTML = '<p style="color: red;">Request Rejected. If you have any concerns, please contact us.</p>';
+        }
+    </script>
+
+</body>
+</html>
+
+              {% endcomment %}

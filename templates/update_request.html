@@ -1,0 +1,24 @@
+<!-- blood_bank/blood_requests/templates/blood_requests/update_request.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Request</title>
+</head>
+<body>
+    <h2>Update Request Status</h2>
+    <form method="post" action="">
+        {% csrf_token %}
+        <label for="status">Status:</label>
+        <select name="status" id="status">
+            <option value="Pending" {% if blood_request.status == 'Pending' %}selected{% endif %}>Pending</option>
+            <option value="Approved" {% if blood_request.status == 'Approved' %}selected{% endif %}>Approved</option>
+            <option value="Rejected" {% if blood_request.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+        </select>
+        <br>
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

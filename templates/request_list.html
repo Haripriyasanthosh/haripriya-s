@@ -1,0 +1,132 @@
+{% comment %} {% include 'user_header.html' %}
+    <style>
+        /* Add your styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 100%;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+    <center>
+
+    <h1>Blood Request Page</h1>
+
+    <form  method="POST" style="width: 800px;">
+       
+        <!-- Blood Liters -->
+        <label for="bloodLiters">Blood Liters:</label>
+        <select id="bloodLiters" name="bloodLiters" min="0.45" required></select>
+        
+        <label for="b_date">Required Date:</label>
+        <input type="date" id="b_date" name="b_date" min="" required>
+
+        <input type="submit" value="Send Request" name='submit' >
+      
+
+        
+            // Populate Blood Liters dynamically from 1 to 10
+            var bloodLitersSelect = document.getElementById("bloodLiters");
+            for (var i = 0.452; i <= 0.45; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = i;
+                bloodLitersSelect.add(option); {% endcomment %}
+
+
+
+            {% comment %} <script>
+
+            // Set min date for Required Date input to today
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+            var yyyy = today.getFullYear();
+
+            today = yyyy + '-' + mm + '-' + dd;
+            document.getElementById("b_date").min = today;
+            
+        </script>
+
+
+    </form>
+</center>
+
+    {% include 'footer.html' %} {% endcomment %} 
+
+
+
+    {% include 'user_header.html' %}
+<style>
+    /* Add your styles here */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input, select {
+        margin-bottom: 10px;
+        padding: 8px;
+        width: 100%;
+    }
+    button {
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+<center>
+
+<h1>Blood Request Page</h1>
+
+<form method="POST" style="width: 800px;">
+   
+    <!-- Blood Liters -->
+    <label for="bloodLiters">Blood Liters:</label>
+    <input type="text" id="bloodLiters" name="bloodLiters" value="0.45" readonly>
+    
+    <label for="b_date">Required Date:</label>
+    <input type="date" id="b_date" name="b_date" min="" required>
+
+    <input type="submit" value="Send Request" name='submit' >
+  
+
+    
+    <script>
+        // Set min date for Required Date input to today
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById("b_date").min = today;
+        
+    </script>
+
+
+</form>
+</center>
+
+{% include 'footer.html' %}

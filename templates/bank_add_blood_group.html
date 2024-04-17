@@ -1,0 +1,54 @@
+{% include 'admin_header.html' %}
+<center>
+    <h1>Blood group availability</h1>
+
+    
+    <form method="post">
+
+        <table class="table table-striped" style="width: 1200px;">
+            <tr>
+                <th>Blood group</th>
+                <td>
+                    <select name="b_group" required class="form-control">
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+            
+                    </select>
+            </tr>
+            <tr>
+                <th>Details</th>
+                <td> <input type="email" name="b_details" required class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Blood expiry</th>
+                <td> <input type="text" name="b_expiry" required class="form-control"></td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td> <textarea name="b_status" required ></textarea></td>
+            </tr>
+            <tr>
+            <th> Bank Name </th>
+            <td> <input type="text" name="b_name" required class="form-control"></td>
+            <tr>
+                {% comment %} <th>Password</th>
+                <td><input type="password" name="password" required class="form-control">
+            </tr> {% endcomment %}
+            <tr>
+                <td align="center" colspan="2"> <input type="submit" value="Check" style="width: 200px;" class="btn btn-primary"></td>
+            </tr>
+            
+        </table>
+
+       
+    </form>
+</center>
+
+
+    {% include 'footer.html' %}

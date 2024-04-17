@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success</title>
+</head>
+<body>
+    <h2>Order Success</h2>
+    <p>Your order has been placed successfully!</p>
+    <p>Ordered Item: {{ selected_item.name }}</p>
+    <!-- You can provide a link to view the ordered item list -->
+    <a href="{% url 'food_menu' %}">View Ordered Item List</a>
+</body>
+</html>

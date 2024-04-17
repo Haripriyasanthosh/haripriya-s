@@ -1,0 +1,116 @@
+
+    {% include 'user_header.html' %}
+
+    <title>Blood Type Search</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        select {
+            padding: 5px;
+        }
+    </style>
+
+    <center>
+        <h1>Blood Group Availability</h1>
+        <label for="bloodTypeSelect">Select a Blood Type:</label>
+        <select id="bloodTypeSelect" style="width: 250PX;">
+            <option value="">Select</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+        </select>
+        <p id="selectedBloodType"></p>
+
+        <button onclick="searchBloodType()" style="width: 250PX;">Search</button>
+
+        <table id="resultTable">
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Blood Type</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Actions</th> <!-- New header for actions -->
+            </tr>
+            {% for donor in dview %}
+                <tr>
+                    <td>{{ donor.full_name }}</td>
+                    <td>{{ donor.email }}</td>
+                    <td>{{ donor.blod_type }}</td>
+                    <td>{{ donor.phone }}</td>
+                    <td>{{ donor.address }}</td>
+                    <!-- <td>{{ donor.id }}</td> -->
+
+                    <td class="action-buttons">
+                        <a href="/request_list/{{donor.id}}" class="btn btn-warning">Request For Blood</a>
+                        <br>    <br>
+                        
+                        <a href="/donate_list/{{donor.id}}" class="btn btn-warning">Donate Blood</a></td>
+                   
+                </tr>
+            {% endfor %}
+        </table>
+    </center>
+
+    <script>
+        function searchBloodType() {
+            var bloodType = document.getElementById("bloodTypeSelect").value;
+            var resultTable = document.getElementById("resultTable");
+            var selectedBloodType = document.getElementById("selectedBloodType");
+    
+            selectedBloodType.innerHTML = "Selected Blood Type: " + bloodType;
+    
+            resultTable.innerHTML = "<tr><th>Full Name</th><th>Email</th><th>Blood Type</th><th>Phone</th><th>Address</th><th>Actions</th></tr>";
+    
+            var data = [
+                {% for donor in dview %}
+                    { id: "{{ donor.id }}", full_name: "{{ donor.full_name }}", email: "{{ donor.email }}", bloodType: "{{ donor.blod_type }}", phone: "{{ donor.phone }}", address: "{{ donor.address }}" },
+                {% endfor %}
+            ];
+    
+            data.forEach(function (person) {
+                if (bloodType === person.bloodType || bloodType === "") {
+                    var row = resultTable.insertRow(-1);
+                    var fullNameCell = row.insertCell(0);
+                    var emailCell = row.insertCell(1);
+                    var bloodTypeCell = row.insertCell(2);
+                    var phoneCell = row.insertCell(3);
+                    var addressCell = row.insertCell(4);
+                    var actionsCell = row.insertCell(5); // New cell for actions
+    
+                    fullNameCell.innerHTML = person.full_name;
+                    emailCell.innerHTML = person.email;
+                    bloodTypeCell.innerHTML = person.bloodType;
+                    phoneCell.innerHTML = person.phone;
+                    addressCell.innerHTML = person.address;
+    
+                    // Include the donor's ID in the links
+                    actionsCell.innerHTML = `
+                        <a href="/request_list/${person.id}" class="btn btn-warning">Request For Blood</a>
+                        <br> <!-- Line break -->
+                        <br>
+                        <a href="/donate_list/${person.id}" class="btn btn-warning">Donate Blood</a>
+                    `;
+                }
+            });
+        }
+    </script>
+
+
+    {% include 'footer.html' %}

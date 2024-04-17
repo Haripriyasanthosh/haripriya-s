@@ -1,0 +1,37 @@
+{% include 'admin_header.html' %}
+
+<div class="card">
+    <center>
+    <h1 class="card-title">Bank Information</h1>
+</center>   
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Bank Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                    
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in docview %}
+                        <tr>
+                            <td>{{ i.bank_name }}</td>
+                            <td>{{ i.bank_address }}</td>
+                            <td>{{ i.bank_phone }}</td>
+                            <td>{{ i.bank_email }}</td>
+                        
+                            <!-- Uncomment this line if you want to add a delete button -->
+                            <!-- <td><a href="/delete_bank/{{ i.login_id }}" class="btn btn-warning">Delete</a></td> -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+{% include 'footer.html' %}

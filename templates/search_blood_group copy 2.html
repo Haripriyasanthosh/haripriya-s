@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blood Type Search</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        select {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'public_header.html'%}
+    <center>
+    <h1>Blood Group Availability</h1>
+    <label for="bloodTypeSelect">Select a Blood Type:</label>
+    <select id="bloodTypeSelect">
+        <option value="">Select</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+    </select>
+    <button onclick="searchBloodType()">Search</button>
+
+    <table id="resultTable">
+        <tr>
+            <th>Name</th>
+            <th>Blood Type</th>
+        </tr>
+    </table>
+
+    <script>
+        function searchBloodType() {
+            var bloodType = document.getElementById("bloodTypeSelect").value;
+            var resultTable = document.getElementById("resultTable");
+            resultTable.innerHTML = "<tr><th>Name</th><th>Blood Type</th></tr>"; // Clear the table
+
+            // You can replace this with your data or an API call
+            var data = [
+                { name: "John", bloodType: "A+" },
+                { name: "Alice", bloodType: "B-" },
+                { name: "Bob", bloodType: "O+" },
+                { name: "Juliet", bloodType: "AB+" },
+                { name: "Clara", bloodType: "AB-" },
+                { name: "Binson", bloodType: "A-" },
+                { name: "David", bloodType: "B+" },
+                { name: "Gill", bloodType: "O-" },
+
+            ];
+
+            data.forEach(function (person) {
+                if (bloodType === person.bloodType || bloodType === "") {
+                    var row = resultTable.insertRow(-1);
+                    var nameCell = row.insertCell(0);
+                    var bloodTypeCell = row.insertCell(1);
+                    nameCell.innerHTML = person.name;
+                    bloodTypeCell.innerHTML = person.bloodType;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+

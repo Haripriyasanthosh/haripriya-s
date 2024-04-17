@@ -1,0 +1,78 @@
+{% include 'user_header.html' %}
+<center>
+    <h1>Edit Profile</h1>
+    <form method="post" action="{% url 'user_update_profile' %}">
+        {% if user_up %}
+        <table class="table table-striped" style="width: 1200px;">
+            <tr>
+                <th>Full Name</th>
+                <td><input type="text" name="name" id="name" value="{{ users_up.name }}" required class="form-control"></td>
+                <td><span id="nameError"></span></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" name="email" value="{{ users_up.email }}" required class="form-control"></td>
+                <td><span id="emailError"></span></td>
+            </tr>
+            <tr>
+                <th>Blood Type:</th>
+                <td>
+                    <select name="blood_type" required class="form-control">
+                        <option value="A+" {% if users_up.blood_type == "A+" %}selected{% endif %}>A+</option>
+                        <!-- Add selected attribute based on the user's blood type -->
+                        <option value="A-" {% if users_up.blood_type == "A-" %}selected{% endif %}>A-</option>
+                        <option value="B+" {% if users_up.blood_type == "B+" %}selected{% endif %}>B+</option>
+                        <option value="B-" {% if users_up.blood_type == "B-" %}selected{% endif %}>B-</option>
+                        <option value="O+" {% if users_up.blood_type == "O+" %}selected{% endif %}>O+</option>
+                        <option value="O-" {% if users_up.blood_type == "O-" %}selected{% endif %}>O-</option>
+                        <option value="AB+" {% if users_up.blood_type == "AB+" %}selected{% endif %}>AB+</option>
+                        <option value="AB-" {% if users_up.blood_type == "AB-" %}selected{% endif %}>AB-</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td><input type="text" pattern="[0-9]{10}" name="phone" value="{{ users_up.phone }}" required class="form-control"></td>
+                <td><span id="phoneError"></span></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td><textarea name="address" required>{{ users_up.address }}</textarea></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="password" name="password" required class="form-control"></td>
+                <td><span id="passwordError"></span></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><input type="submit" value="Update" style="width: 200px;" class="btn btn-primary"></td>
+            </tr>
+        </table>
+        {% endif %}
+    </form>
+</center>
+
+<script>
+    function validateName() {
+        const nameInput = document.getElementById('name');
+        const nameError = document.getElementById('nameError');
+        const namePattern = /^[A-Z][a-zA-Z]*$/;
+
+        if (!namePattern.test(nameInput.value)) {
+            nameError.textContent = 'Name must start with a capital letter and contain only alphabets.';
+        } else {
+            nameError.textContent = '';
+        }
+    }
+
+    document.querySelector('form').addEventListener('submit', function(event) {
+        validateName();
+        // Add other form field validations here if needed
+        // Example: validateEmail();
+        // Example: validatePhone();
+        // Return false to prevent form submission if any validation fails
+        // If all validations pass, the form will submit as usual
+    });
+</script>
+
+{% include 'footer.html' %}

@@ -1,0 +1,19 @@
+<!-- book_slot.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Slot</title>
+</head>
+<body>
+    <h1>Book a Slot</h1>
+    <form method="post" action="{% url 'donor_home' %}">
+        {% csrf_token %}
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <small>Please confirm the email address to receive confirmation mail.</small><br><br>
+        <input type="submit" value="Book Slot">
+    </form>
+</body>
+</html>

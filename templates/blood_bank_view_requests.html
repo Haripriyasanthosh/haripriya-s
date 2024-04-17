@@ -1,0 +1,37 @@
+{% include 'bank_header.html' %}
+
+<div class="card">
+    <center>
+    <h1 class="card-title">User Details</h1>
+</center>   
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Blood Type</th>
+                         {% comment %} <th>Bloodlitres</th> {% endcomment %}
+                        <th>Phone</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in user_details %}
+                        <tr>
+                            <td>{{ user.full_name }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.blod_type }}</td>
+                            {% comment %} <td>{{ user.b_litres }}</td>  {% endcomment %}
+                            <td>{{ user.u_phone }}</td>
+                            <td>{{ user.address }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+{% include 'footer.html' %}

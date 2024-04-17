@@ -1,0 +1,47 @@
+<!-- In add_blood_product.html -->
+{% include 'bank_header.html' %}
+
+
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Add Blood Product</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="donor_id">Donor ID:</label>
+                <input type="text" class="form-control" id="donor_id" name="donor_id">
+            </div>
+            <div class="form-group">
+                <label for="blood_type">Blood Type:</label>
+                <select class="form-control" id="blood_type" name="blood_type">
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="product_type">Product Type:</label>
+                <select class="form-control" id="product_type" name="product_type">
+                    <option value="Plasma">Plasma</option>
+                    <option value="RBC">RBC (Red Blood Cells)</option>
+                    <option value="Platelets">Platelets(Pooled Platelets)</option>
+                    <option value="Platelets">Platelets(Apheresis Platelets)</option>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="expiration_date">Expiration Date:</label>
+                <input type="date" class="form-control" id="expiration_date" name="expiration_date" pattern="\d{4}-\d{2}-\d{2}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+</div>
+
+
+{% include 'footer.html' %}

@@ -1,0 +1,16 @@
+<!-- In inventory.html -->
+<!DOCTYPE html>
+{% include 'bank_header.html' %}
+
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Blood Bank Inventory</h2>
+        <ul class="list-group list-group-flush">
+            {% for product in inventory %}
+                <li class="list-group-item">{{ product }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,17 @@
+<!-- awareness_session.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awareness Session</title>
+</head>
+<body>
+    <h1>Awareness Session</h1>
+    <p>Date: {{ session_details.date }}</p>
+    <p>Time: {{ session_details.time }}</p>
+    <p>Speaker: {{ session_details.doctor }}</p>
+    <!-- Add more session details as needed -->
+    <p>To book a slot, <a href="{% url 'book_slot' %}">click here</a>.</p>
+</body>
+</html>

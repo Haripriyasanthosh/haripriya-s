@@ -1,0 +1,46 @@
+{% include 'donor_header.html' %}
+<center>
+<form action="" method="post">
+    <table class="table table-striped" style="width: 1200px;">
+
+        <tr>
+            <th>Bloodliters</th>
+            <th>Required Date</th>
+            <th>Status</th>
+            <th>Name</th>
+            <th>phone</th>
+            <th>Address</th>
+            <th>Accept</th>
+            <th>Reject</th>
+
+
+            
+            
+        </tr>
+
+        {% for i in docview %}
+        <tr>
+            <td>{{i.b_litres}}</td>
+            <td>{{i.b_date}}</td>
+            <td>{{i.b_status}}</td>
+            <td>{{i.user.full_name}}</td>
+            <td>{{i.user.u_phone}}</td>
+            <td>{{i.user.address}}</td>
+            <td>{{i.user.accept}}</td>
+            <td>{{i.user.reject}}</td>
+            
+            {% if i.b_status == 'Pending' %}
+
+            <td><a href="/accept_req/{{i.id}}/{{i.user_id}}" class="btn btn-warning">Accept</a></td>
+            <td><a href="/reject_req/{{i.id}}/{{i.user_id}}" class="btn btn-warning">Reject</a></td>
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+
+    </table>  
+</form>
+</center>
+
+
+{% include 'footer.html' %}
